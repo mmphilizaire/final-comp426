@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/final-comp426/static/css/main.5ed40347.chunk.css",
-    "main.js": "/final-comp426/static/js/main.2462c03c.chunk.js",
-    "main.js.map": "/final-comp426/static/js/main.2462c03c.chunk.js.map",
+    "main.js": "/final-comp426/static/js/main.23743efb.chunk.js",
+    "main.js.map": "/final-comp426/static/js/main.23743efb.chunk.js.map",
     "runtime-main.js": "/final-comp426/static/js/runtime-main.edf87849.js",
     "runtime-main.js.map": "/final-comp426/static/js/runtime-main.edf87849.js.map",
-    "static/js/2.fa554cb8.chunk.js": "/final-comp426/static/js/2.fa554cb8.chunk.js",
-    "static/js/2.fa554cb8.chunk.js.map": "/final-comp426/static/js/2.fa554cb8.chunk.js.map",
+    "static/js/2.0b31a773.chunk.js": "/final-comp426/static/js/2.0b31a773.chunk.js",
+    "static/js/2.0b31a773.chunk.js.map": "/final-comp426/static/js/2.0b31a773.chunk.js.map",
     "index.html": "/final-comp426/index.html",
     "static/css/main.5ed40347.chunk.css.map": "/final-comp426/static/css/main.5ed40347.chunk.css.map",
-    "static/js/2.fa554cb8.chunk.js.LICENSE.txt": "/final-comp426/static/js/2.fa554cb8.chunk.js.LICENSE.txt"
+    "static/js/2.0b31a773.chunk.js.LICENSE.txt": "/final-comp426/static/js/2.0b31a773.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.edf87849.js",
-    "static/js/2.fa554cb8.chunk.js",
+    "static/js/2.0b31a773.chunk.js",
     "static/css/main.5ed40347.chunk.css",
-    "static/js/main.2462c03c.chunk.js"
+    "static/js/main.23743efb.chunk.js"
   ]
 }
