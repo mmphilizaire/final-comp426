@@ -115,7 +115,7 @@ class Player extends React.Component{
   
       return(
           <div>
-            <Image img="/invader.png" width={this.props.dimension+"px"} height={this.props.dimension+"px"} left={this.state.x} top={this.props.y} />
+            <Image img={`${process.env.PUBLIC_URL}/invader.png`} width={this.props.dimension+"px"} height={this.props.dimension+"px"} left={this.state.x} top={this.props.y} />
             {bullets}
           </div>
         );
@@ -124,7 +124,7 @@ class Player extends React.Component{
 
   function PlayerBullet(props){
     return(
-        <Image img="/bullet.png" width={bullet_width+"px"} height={bullet_height+"px"} left={props.x} top={props.y}/>
+        <Image img={`${process.env.PUBLIC_URL}/bullet.png`} width={bullet_width+"px"} height={bullet_height+"px"} left={props.x} top={props.y}/>
       );
   }
 

@@ -151,7 +151,7 @@ class AlienCrowd extends React.Component {
     }
     render(){
         return(
-        <Image img="/alien.png" width={alien_size+"px"} height={alien_size+"px"} left={this.props.x} top={this.props.y}/>
+        <Image img={`${process.env.PUBLIC_URL}/alien.png`} width={alien_size+"px"} height={alien_size+"px"} left={this.props.x} top={this.props.y}/>
       );
     }
   }
@@ -163,7 +163,7 @@ class AlienCrowd extends React.Component {
   
     render() {
       return(
-        <Image img="/bullet2.png" width={bullet_width+"px"} height={bullet_height+"px"} left={this.props.x} top={this.props.y}/>
+        <Image img={`${process.env.PUBLIC_URL}/bullet2.png`} width={bullet_width+"px"} height={bullet_height+"px"} left={this.props.x} top={this.props.y}/>
       )
     }
   }

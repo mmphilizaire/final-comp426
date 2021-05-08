@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { HashRouter as Router, Switch, Route } from 'react-router-dom';
+import { HashRouter, Switch, Route } from 'react-router-dom';
 import './index.css';
 import {App, Login, SignUp, Play, LeaderBoard} from './App';
 
 ReactDOM.render(
-  <Router>
+  <HashRouter>
      <Switch>
         <Route exact path="/" component={App}/>
         <Route exact path="/login" component={Login}/>
@@ -13,7 +13,7 @@ ReactDOM.render(
         <Route exact path="/play" component={Play}/>
         <Route exact path="/leaderboard" component={LeaderBoard}/>
     </Switch>
-  </Router>,
+  </HashRouter>,
   document.getElementById('root')
 );
 
