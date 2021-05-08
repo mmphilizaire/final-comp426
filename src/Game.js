@@ -241,20 +241,27 @@ class GameOver extends React.Component{
     super(props);
     this.state = {
       joke: "",
+      tweetMessage: "",
     }
     this.getJoke();
   }
 
   handleTweet = async (event) => {
     event.preventDefault();
-    await axios({
-      method: 'post',
-      url: 'https://comp426-1fa20.cs.unc.edu/a09/tweets',
-      withCredentials: true,
-      data: {
-        body: `Just scored ${this.props.score} points in Space Invaders!`,
-      },
-  });
+    try{
+      await axios({
+        method: 'post',
+        url: 'https://comp426-1fa20.cs.unc.edu/a09/tweets',
+        withCredentials: true,
+        data: {
+          body: `Just scored ${this.props.score} points in Space Invaders!`,
+        },
+      });
+      this.setState({tweetMessage: "Shared your score to COMP426 Twitter!"});
+    }
+    catch(error){
+      this.setState({tweetMessage: "Couldn't post tweet! Login to comp426.com"});
+    }
   }
 
   reloadGame = (event) => {
@@ -282,6 +289,7 @@ class GameOver extends React.Component{
         <p>Score: {this.props.score}</p>
         <a href="" onClick={this.reloadGame}>PLAY AGAIN</a>
         <a href="" onClick={this.handleTweet}>TWEET</a>
+        <p className="tweetMessage">{this.state.tweetMessage}</p>
         <p><span>A joke to cheer you up: </span>{this.state.joke}</p>
       </div>
     );

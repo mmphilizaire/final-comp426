@@ -143,3 +143,8 @@ input{
 span{
   font-weight: bold;
 }
+
+.tweetMessage{
+  margin-top: 0px;
+  font-size: small;
+}
