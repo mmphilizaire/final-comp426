@@ -130,7 +130,7 @@ class Player extends React.Component{
 
   function Image(props) {
     return (
-      <img src={props.img} width={props.width} height={props.height} style={{left: props.left, top: props.top}}></img>
+      <img alt="" src={props.img} width={props.width} height={props.height} style={{left: props.left, top: props.top}}></img>
     );
    }
 

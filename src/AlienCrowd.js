@@ -5,7 +5,6 @@ const alien_size = 35;
 const bullet_width = 2;
 const bullet_height = 15;
 const alien_start_x = 10;
-const alien_start_y = 10;
 
 class AlienCrowd extends React.Component {
     constructor(props){
@@ -19,13 +18,13 @@ class AlienCrowd extends React.Component {
     componentDidMount() {
       this.updateInterval = setInterval(() => {
         this.update();
-      }, 100);
+      }, 50);
   
       this.newBulletInterval = setInterval(() => {
         this.setState({
           bullets: this.newBullet(),
         });
-      }, 1000);
+      }, 500);
     }
   
     componentWillUnmount() {
@@ -54,14 +53,14 @@ class AlienCrowd extends React.Component {
         
         if(new_movingRight){
             new_x += 5;
-            if(new_x == this.props.dimension-alien_start_x-alien_size*this.props.cols){
+            if(new_x === this.props.dimension-alien_start_x-alien_size*this.props.cols){
                 new_y += 10;
                 new_movingRight = false;
             }
           }
           else{
             new_x -= 5;
-            if(new_x == 10){
+            if(new_x === 10){
               new_y += 10;
               new_movingRight = true;
             }
@@ -100,7 +99,7 @@ class AlienCrowd extends React.Component {
         while(j >= 0 && !this.props.aliens[j][i]){
           j -= 1;
         }
-        if(j == -1){
+        if(j === -1){
           continue;
         }
         else{
@@ -146,9 +145,6 @@ class AlienCrowd extends React.Component {
   }
 
   class Alien extends React.Component {
-    constructor(props){
-      super(props);
-    }
     render(){
         return(
         <Image img={`${process.env.PUBLIC_URL}/alien.png`} width={alien_size+"px"} height={alien_size+"px"} left={this.props.x} top={this.props.y}/>
@@ -157,10 +153,6 @@ class AlienCrowd extends React.Component {
   }
   
   class AlienBullet extends React.Component{
-    constructor(props){
-      super(props);
-    }
-  
     render() {
       return(
         <Image img={`${process.env.PUBLIC_URL}/bullet2.png`} width={bullet_width+"px"} height={bullet_height+"px"} left={this.props.x} top={this.props.y}/>
@@ -170,7 +162,7 @@ class AlienCrowd extends React.Component {
 
   function Image(props) {
     return (
-      <img src={props.img} width={props.width} height={props.height} style={{left: props.left, top: props.top}}></img>
+      <img src={props.img} alt="" width={props.width} height={props.height} style={{left: props.left, top: props.top}}></img>
     );
 }
 

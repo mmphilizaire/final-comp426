@@ -1,4 +1,7 @@
- 
+ * {
+  font-family: 'Courier New', Courier, monospace;
+ } 
+
 .Home{
   width: 100%;
   height: 100%;
@@ -48,6 +51,14 @@
 
 .GameOver p{
   position: block;
+}
+
+.GameOver{
+  padding: 0px 20px;
+}
+
+.GameOver a{
+  display: block;
 }
 
 a{
@@ -100,5 +111,35 @@ img{
 .errorMessage{
   color: red;
   font-size: x-small;
+  font-weight: bold;
+}
+
+input{
+  padding: 10px;
+  background-color: black;
+  border-bottom: 1px solid white;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  color: white;
+}
+
+.currentHeader{
+  font-weight: bold;
+}
+
+.currentHeader:hover{
+  color: chartreuse;
+}
+
+.titles > p{
+  font-weight: bold;
+}
+
+.StartGame{
+    font-weight: bold;
+}
+
+span{
   font-weight: bold;
 }

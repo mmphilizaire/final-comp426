@@ -3,7 +3,6 @@ import './App.css';
 import Player from "./Player.js";
 import AlienCrowd from "./AlienCrowd.js";
 import {auth, firestore} from "./firebase.js";
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const game_dimension = 550;
@@ -90,7 +89,7 @@ class Game extends React.Component {
       if(this.collision(bullet.x, bullet.y, alien_bullet_width, alien_bullet_height, this.player_x, this.player_y, player_dimension, player_dimension)){
         bullets.splice(i, 1);
         lives -= 1;
-        if(lives == 0){
+        if(lives === 0){
           gameOver = true;
           this.updateFirebase(this.state.score);
         }
@@ -191,7 +190,8 @@ class Game extends React.Component {
     return aliens;
 }
 
-  startGame = () => {
+  startGame = (event) => {
+    event.preventDefault();
     this.setState({gameStart: true})
   }
 
@@ -216,7 +216,7 @@ class Game extends React.Component {
     else if(!this.state.gameStart){
       return(
         <div className="Game">
-          <p onClick={this.startGame} className="StartGame">CLICK TO START</p>
+          <a href="" onClick={this.startGame} className="StartGame">CLICK TO START</a>
         </div>
       )
     }
@@ -245,8 +245,9 @@ class GameOver extends React.Component{
     this.getJoke();
   }
 
-  handleTweet = async () => {
-    const result = await axios({
+  handleTweet = async (event) => {
+    event.preventDefault();
+    await axios({
       method: 'post',
       url: 'https://comp426-1fa20.cs.unc.edu/a09/tweets',
       withCredentials: true,
@@ -256,7 +257,8 @@ class GameOver extends React.Component{
   });
   }
 
-  reloadGame = () => {
+  reloadGame = (event) => {
+    event.preventDefault();
     window.location.reload(false);
   }
 
@@ -278,9 +280,9 @@ class GameOver extends React.Component{
       <div className="GameOver">
         <h3>GAME OVER</h3>
         <p>Score: {this.props.score}</p>
-        <a onClick={this.reloadGame}>PLAY AGAIN</a>
-        <a onClick={this.handleTweet}>TWEET</a>
-        <p>Here's a joke to cheer you up! <br></br> {this.state.joke}</p>
+        <a href="" onClick={this.reloadGame}>PLAY AGAIN</a>
+        <a href="" onClick={this.handleTweet}>TWEET</a>
+        <p><span>A joke to cheer you up: </span>{this.state.joke}</p>
       </div>
     );
   }

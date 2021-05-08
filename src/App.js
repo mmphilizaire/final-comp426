@@ -58,12 +58,12 @@ class Login extends React.Component{
 
   submitFormHandler = async (event) => {
     event.preventDefault();
-    if(this.state.email == "" || this.state.password == ""){
+    if(this.state.email === "" || this.state.password === ""){
       this.setState({errorMessage: "Must enter email/password"});
       return;
     }
     try{
-      const {user} = await auth.signInWithEmailAndPassword(this.state.email, this.state.password);
+      await auth.signInWithEmailAndPassword(this.state.email, this.state.password);
       this.setState({signedIn: true});
     }
     catch(error){
@@ -90,15 +90,15 @@ class Login extends React.Component{
       return(<Redirect to="/play"/>)
     }
     return(
-      <div class="Login">
+      <div className="Login">
         <h2>LOGIN</h2>
         <form onSubmit={this.submitFormHandler}>
           <input type="text" name="email" placeholder="Email" onChange={this.formChangeHandler}></input>
           <input type="password" name="password" placeholder="Password" onChange={this.formChangeHandler}></input>
-          <p class="errorMessage">{this.state.errorMessage}</p>
+          <p className="errorMessage">{this.state.errorMessage}</p>
           <div>
-            <a onClick={this.submitFormHandler}>SUBMIT</a>
-            <h6><Link to='/'>CANCEL</Link></h6>
+            <a href="" onClick={this.submitFormHandler}>SUBMIT</a>
+            <p><Link to='/'>CANCEL</Link></p>
           </div>
         </form>
       </div>
@@ -126,7 +126,7 @@ class SignUp extends React.Component{
 
   submitFormHandler = async (event) => {
     event.preventDefault();
-    if(this.state.email == "" || this.state.password == "" || this.state.username == ""){
+    if(this.state.email === "" || this.state.password === "" || this.state.username === ""){
       this.setState({errorMessage: "Must enter username/email/password"});
       return;
     }
@@ -171,16 +171,16 @@ class SignUp extends React.Component{
       return(<Redirect to="/play"/>)
     }
     return(
-      <div class="SignUp">
+      <div className="SignUp">
         <h2>CREATE AN ACCOUNT</h2>
         <form>
           <input type="text" name="username" placeholder="Username" onChange={this.formChangeHandler}></input>
           <input type="text" name="email" placeholder="Email" onChange={this.formChangeHandler}></input>
           <input type="password" name="password" placeholder="Password" onChange={this.formChangeHandler}></input>
-          <p class="errorMessage">{this.state.errorMessage}</p>
+          <p className="errorMessage">{this.state.errorMessage}</p>
           <div>
-            <a onClick={this.submitFormHandler}>SUBMIT</a>
-            <h6><Link to='/'>CANCEL</Link></h6>
+            <a href="" onClick={this.submitFormHandler}>SUBMIT</a>
+            <p><Link to='/'>CANCEL</Link></p>
           </div>
         </form>
       </div>
@@ -214,7 +214,7 @@ class Play extends React.Component{
     }
     return(
       <div className="Play">
-        <Header signOut={this.userSignOut}/>
+        <Header current={"play"} signOut={this.userSignOut}/>
         <Game dimension={550}></Game>
       </div>
     );
@@ -264,14 +264,14 @@ class LeaderBoard extends React.Component{
 
     let item_divs = this.state.leaderboard.map((value, index) => {
       return(
-          <LeaderBoardItem key={index} place={index+1} username={value.username} score={value.high_score}/>
+          <LeaderBoardItem id={index} key={index} place={index+1} username={value.username} score={value.high_score}/>
       );
     })
     
     return(
       <div className="LeaderBoard">
-        <Header signOut={this.userSignOut}/>
-        <LeaderBoardItem key={-1} place={"place"} username={"username"} score={"score"}></LeaderBoardItem>
+        <Header current={"leaderboard"} signOut={this.userSignOut}/>
+        <LeaderBoardItem id={-1} key={-1} place={"place"} username={"username"} score={"score"}></LeaderBoardItem>
         {item_divs}
       </div>
     );
@@ -279,8 +279,17 @@ class LeaderBoard extends React.Component{
 }
 
 const LeaderBoardItem = (props) => {
+  if(props.id === -1){
+    return(
+      <div className="LeaderBoardItem titles" >
+        <p>{props.place}</p>
+        <p>{props.username}</p>
+        <p>{props.score}</p>
+    </div>
+    )
+  }
   return(
-    <div className="LeaderBoardItem" key={props.key}>
+    <div className="LeaderBoardItem" >
       <p>{props.place}</p>
       <p>{props.username}</p>
       <p>{props.score}</p>
@@ -289,11 +298,20 @@ const LeaderBoardItem = (props) => {
 }
 
 const Header = (props) => {
-  return (
-    <div className="Header">
-        <Link to="/play">PLAY</Link>
+  if(props.current === "play"){
+    return(
+      <div className="Header">
+        <a className="currentHeader">PLAY</a>
         <Link to="/leaderboard">LEADERBOARD</Link>
         <a onClick={props.signOut}>SIGN OUT</a>
+      </div>
+    );
+  }
+  return (
+    <div className="Header">
+      <Link to="/play">PLAY</Link>
+      <a className="currentHeader">LEADERBOARD</a>
+      <a onClick={props.signOut}>SIGN OUT</a>
     </div>
   )
 };
