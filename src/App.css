@@ -1,38 +1,104 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+ 
+.Home{
+  width: 100%;
+  height: 100%;
+  color: chartreuse;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.Login, .SignUp{
+  width: 100%;
+  height: 100%;
+  color: chartreuse;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Header{
+  background-color: black;
+  color: chartreuse;
+  display: flex;
+}
+
+.Header a{
+  margin: 10px 20px;
+}
+
+.Login input, .SignUp input{
+  display: block;
+}
+
+.Play{
+  background-color: black;
+}
+
+.LeaderBoardItem{
+  color: chartreuse;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+}
+
+.GameOver p{
+  position: block;
+}
+
+a{
+  color: chartreuse;
+  text-decoration: none;
+}
+
+a:hover {
+  color: hotpink;
+}
+
+img{
+  position: absolute;
+}
+
+.Game {
+  background-color: black;
+  height: 550px;
+  width: 550px;
+  position: absolute;
+  left: 100px;
+  right: 100px;
+  border-color: grey;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.Game p, .Game h3{
+  color:white;
+}
+
+.Lives{
+  top: 0px;
+  left: 0px;
+  position: absolute;
+}
+
+.Score{
+  top: 40px;
+  left: 0px;
+  position: absolute;
+}
+
+.User{
+  position: absolute;
+  top: 0px;
+  left: 600px;
+}
+
+.errorMessage{
+  color: red;
+  font-size: x-small;
+  font-weight: bold;
 }
